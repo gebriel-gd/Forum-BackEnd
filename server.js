@@ -7,7 +7,7 @@ const userRouter = require("./server/api/user.router");
 const questionRouter = require("./server/api/questions/question.router");
 const answerRouter = require("./server/api/answers/answer.router");
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT||80;
 
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
@@ -17,7 +17,7 @@ app.use("/api/users", userRouter);
 app.use("/api/users", questionRouter);
 app.use("/api/users", answerRouter);
 
-app.listen(port, () => console.log(`Listening at http://localhost:${port}`));
+app.listen(port,"0.0.0.0", () => console.log(`Listening at http://localhost:${port}`));
 
 //connects to database, so it connects to the pool connection
 
